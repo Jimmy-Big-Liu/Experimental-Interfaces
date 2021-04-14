@@ -1,0 +1,38 @@
+import processing.serial.*;
+Serial myPort;
+void setup(){
+  size(500,500);
+  background(0);
+  frameRate(2);
+  myPort =new Serial(this,"COM3",9600);
+}
+int value = 0;
+void draw(){
+  while(myPort.available()>0)
+    {
+    char inByte =myPort.readChar();
+    println(inByte);            
+    switch(inByte)
+    {
+
+  case'a':
+  background(0);
+  fill(random(0,255),random(0,255),0);
+  rect(0,0,300,300);
+  fill(random(0,255),0,random(0,255));
+  rect(320,0,500,300);
+  fill(0,0,random(0,255));
+  rect(320,320,500,500);
+  fill(0,random(0,255),random(0,255));
+  rect(0,320,100,100);
+  fill(random(0,255),random(0,255),random(0,255));
+  rect(0,440,100,500);
+  fill(random(50,200),random(50,200),random(50,200));
+  rect(120,320,180,500);
+  break;
+  case'b':
+  background(10);
+  default:break;
+    }
+    }
+}
